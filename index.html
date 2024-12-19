@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع عبدالوهاب قطب سعيد</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f2f8; /* اللون الوردي الفاتح */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff; /* اللون الأزرق */
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        select {
+            padding: 5px;
+            background-color: white;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white; /* اللون الأبيض */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #007bff; /* اللون الأزرق */
+        }
+
+        a {
+            color: #007bff; /* اللون الأزرق */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff; /* اللون الأزرق */
+            color: white;
+        }
+
+        footer a {
+            margin: 0 10px;
+            font-size: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff; /* اللون الأزرق */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* الأزرق الداكن */
+        }
+
+        /* Gallery */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .gallery-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 100%;
+            height: 30px;
+        }
+
+        .progress-fill {
+            background-color: #007bff;
+            text-align: center;
+            color: white;
+            height: 100%;
+            line-height: 30px;
+            font-weight: bold;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .testimonial {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 0;
+            right: 25px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Media Queries for smaller devices */
+        @media only screen and (max-width: 768px) {
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header h1 {
+                font-size: 18px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            footer a {
+                font-size: 16px;
+            }
+
+            .progress-bar {
+                height: 25px;
+            }
+
+            .progress-fill {
+                font-size: 14px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: center;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                width: 100%;
+            }
+
+            select {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                font-size: 14px;
+            }
+
+            input, textarea {
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="headerTitle">أهلاً بك في موقعي الشخصي</h1>
+        <nav>
+            <a href="#home" id="homeLink">الرئيسية</a>
+            <a href="#about" id="aboutLink">عنّي</a>
+            <a href="#gallery">معرض الصور</a>
+            <a href="#progress">مستوى الإنجاز</a>
+            <a href="#testimonials">آراء العملاء</a>
+            <a href="#projects">مشاريعي</a>
+            <select id="languageSelect" onchange="changeLanguage()">
+                <option value="ar">العربية</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="es">Español</option>
+            </select>
+        </nav>
+    </header>
+
+    <section class="bio" id="home">
+        <h2 id="bioTitle">نبذة عني</h2>
+        <p id="bioText">اسمي عبدالوهاب قطب سعيد، طالب في كلية الشريعة والقانون من مصر - البحيرة.</p>
+        <p id="emailText">البريد الإلكتروني: <a href="mailto:qabdelwhab@gmail.com">qabdelwhab@gmail.com</a></p>
+        <p id="phoneText">رقم التليفون: <a href="tel:+201003911682">+20 100 3911682</a></p>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <h2>معرض الصور</h2>
+        <div class="gallery-container">
+            <img src="https://via.placeholder.com/200" alt="Image 1">
+            <img src="https://via.placeholder.com/200" alt="Image 2">
+            <img src="https://via.placeholder.com/200" alt="Image 3">
+        </div>
+    </section>
+
+    <section class="progress" id="progress">
+        <h2>مستوى الإنجاز</h2>
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 75%;">75%</div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <h2>آراء العملاء</h2>
+        <div class="testimonial">
+            <p>"عبدالوهاب هو شخص موهوب وملتزم، كان دائمًا على استعداد للمساعدة والعمل الجاد."</p>
+            <p>- أستاذ محمد</p>
+        </div>
+        <div class="testimonial">
+            <p>"لقد عملت مع عبدالوهاب في العديد من المشاريع وكان دائمًا يتسم بالكفاءة والإبداع."</p>
+            <p>- زميل في الكلية</p>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <h2>مشاريعي</h2>
+        <ul>
+            <li><a href="project1.html">مشروع 1 - وصف المشروع</a></li>
+            <li><a href="project2.html">مشروع 2 - وصف المشروع</a></li>
+            <li><a href="project3.html">مشروع 3 - وصف المشروع</a></li>
+        </ul>
+    </section>
+
+    <section class="contact" id="about">
+        <h2 id="contactTitle">تواصل معي</h2>
+        <form id="contactForm">
+            <label for="name" id="nameLabel">الاسم:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="message" id="messageLabel">الرسالة:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit" id="submitButton">إرسال</button>
+        </form>
+    </section>
+
+    <footer>
+        <p id="footerText">© 2024 عبدالوهاب قطب سعيد. جميع الحقوق محفوظة.</p>
+        <div>
+            <a href="https://www.facebook.com/abdo.qutb.92?mibextid=ZbWKwL" target="_blank">فيسبوك</a>
+            <a href="https://wa.me/+201003911682" target="_blank">واتساب</a>
+        </div>
+    </footer>
+
+    <script>
+        function changeLanguage() {
+            var language = document.getElementById("languageSelect").value;
+
+            if (language === "en") {
+                document.getElementById("headerTitle").innerText = "Welcome to My Personal Website";
+                document.getElementById("homeLink").innerText = "Home";
+                document.getElementById("aboutLink").innerText = "About Me";
+                document.getElementById("bioTitle").innerText = "About Me";
+                document.getElementById("bioText").innerText = "My name is Abdulwahab Qutb Said, a student at the Faculty of Sharia and Law from Egypt - Beheira.";
+                document.getElementById("emailText").innerHTML = "Email: <a href='mailto:qabdelwhab@gmail.com'>qabdelwhab@gmail.com</a>";
+                document.getElementById("phoneText").innerHTML = "Phone: <a href='tel:+201003911682'>+20 100 3911682</a>";
+                document.getElementById("footerText").innerText = "© 2024 Abdulwahab Qutb Said. All rights reserved.";
+            } else if (language === "fr") {
+                document.getElementById("headerTitle").innerText = "Bienvenue sur mon site personnel";
+                document.getElementById("homeLink").innerText = "Accueil";
+                document.getElementById("aboutLink").innerText = "À propos de moi";
+                document.getElementById("bioTitle").innerText = "À propos de moi";
+                document.getElementById("bioText").innerText = "Je m'appelle Abdulwahab Qutb Said, étudiant à la Faculté de Charia et de Droit d'Égypte - Beheira.";
+                document.getElementById("emailText").innerHTML = "E-mail: <a href='mailto:qabdelwhab@gmail.com'>qabdelwhab@gmail.com</a>";
+                document.getElementById("phoneText").innerHTML = "Téléphone: <a href='tel:+201003911682'>+20 100 3911682</a>";
+                document.getElementById("footerText").innerText = "© 2024 Abdulwahab Qutb Said. Tous droits réservés.";
+            } else if (language === "es") {
+                document.getElementById("headerTitle").innerText = "Bienvenido a mi sitio personal";
+                document.getElementById("homeLink").innerText = "Inicio";
+                document.getElementById("aboutLink").innerText = "Sobre mí";
+                document.getElementById("bioTitle").innerText = "Sobre mí";
+                document.getElementById("bioText").innerText = "Mi nombre es Abdulwahab Qutb Said, estudiante en la Facultad de Sharia y Derecho de Egipto - Beheira.";
+                document.getElementById("emailText").innerHTML = "Correo electrónico: <a href='mailto:qabdelwhab@gmail.com'>qabdelwhab@gmail.com</a>";
+                document.getElementById("phoneText").innerHTML = "Teléfono: <a href='tel:+201003911682'>+20 100 3911682</a>";
+                document.getElementById("footerText").innerText = "© 2024 Abdulwahab Qutb Said. Todos los derechos reservados.";
+            }
+        }
+    </script>
+</body>
+</html>
